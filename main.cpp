@@ -4,43 +4,31 @@ using namespace std;
 
 int main()
 {
-    /* for (int i = 5; i <= 10; i++)
-    {
-        cout << i << " ";
-    }
-    cout << endl; */
+    int a = 123;
 
-    /* int my_array[] = {1, 2, 3, 4, 5, 4, 3, 2, 1};
+    cout << a << " " << &a << endl;
 
-    for (int i = 0; i < sizeof(my_array) / sizeof(int); i++)
-    {
-        if (i > 0)
-        {
-            if (my_array[i] < my_array[i - 1])
-                break;
-        }
-        cout << my_array[i] << " ";
-    }
-    cout << endl; */
+    int *b = &a;
+    cout << b << " " << *b << endl;
 
-    /*     char my_string[] = "Hello, World!";
+    *b = 567;
 
-        for (int i = 0; my_string[i] != '\0'; i++)
-        {
-            cout << i << " " << my_string[i] << endl;
-        }
-        cout << endl; */
+    cout << a << " " << b << " " << *b << endl;
 
-    char my_string[] = "Hello, World!";
+    double *c = 0;
 
-    int i = 0;
+    cout << sizeof(int) << " " << sizeof(double) << endl;
+    cout << sizeof(int *) << " " << sizeof(double *) << endl;
+    cout << sizeof(b) << " " << sizeof(c) << endl;
 
-    while (my_string[i] != '\0')
-    {
-        cout << my_string[i];
-        i++;
-    }
-    cout << endl;
+    int my_array[] = {23, 38, 56, 69, 74};
+
+    char my_str[] = {'h', 'e', 'l', 'l', 'o'};
+
+    char *ptr = my_str;
+
+    cout << *(ptr + 4) << endl;
+    cout << ptr[4] << endl;
 
     return 0;
 }
