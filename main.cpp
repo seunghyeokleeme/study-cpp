@@ -2,33 +2,28 @@
 
 using namespace std;
 
+int Add(int a, int b);
+
+void Add(int a, int b, int *c, int *d)
+{
+    *c = a + b;
+    *d = a - b;
+}
+
 int main()
 {
-    int a = 123;
+    cout << Add(1, 2) << endl;
 
-    cout << a << " " << &a << endl;
+    int sum;
+    int sub;
+    Add(4, 5, &sum, &sub);
 
-    int *b = &a;
-    cout << b << " " << *b << endl;
-
-    *b = 567;
-
-    cout << a << " " << b << " " << *b << endl;
-
-    double *c = 0;
-
-    cout << sizeof(int) << " " << sizeof(double) << endl;
-    cout << sizeof(int *) << " " << sizeof(double *) << endl;
-    cout << sizeof(b) << " " << sizeof(c) << endl;
-
-    int my_array[] = {23, 38, 56, 69, 74};
-
-    char my_str[] = {'h', 'e', 'l', 'l', 'o'};
-
-    char *ptr = my_str;
-
-    cout << *(ptr + 4) << endl;
-    cout << ptr[4] << endl;
+    cout << sum << " " << sub << endl;
 
     return 0;
+}
+
+int Add(int a, int b)
+{
+    return a + b;
 }
