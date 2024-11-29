@@ -3,48 +3,51 @@
 
 using namespace std;
 
-struct MyStruct
+class MyClass
 {
-    int first;
-    int second;
-
-    int Sum()
+public:
+    MyClass()
     {
-        return first + second;
+        cout << "MyClass()" << endl;
     }
+
+    MyClass(int number)
+    {
+        cout << "MyClass(int number)" << endl;
+
+        this->number_ = number;
+    }
+
+    ~MyClass()
+    {
+        cout << "~MyClass()" << endl;
+    }
+
+    void Increment(int a)
+    {
+        number_ += a;
+    }
+
+    void Print()
+    {
+        cout << number_ << endl;
+    }
+
+private:
+    int number_ = 0;
 };
 
 int main()
 {
 
-    MyStruct a;
-    a.first = 123;
-    a.second = 456;
+    MyClass my_class1;
+    MyClass my_class2(123);
 
-    cout << sizeof(a) << endl;
+    my_class1.Print();
+    my_class2.Print();
 
-    cout << a.Sum() << endl;
-
-    MyStruct *ptr_a = &a;
-
-    ptr_a->first = -6;
-
-    cout << a.first << " " << a.second << " " << a.Sum() << endl;
-
-    cout << ptr_a->first << " " << ptr_a->second << " " << ptr_a->Sum() << endl;
-
-    MyStruct pairs[10];
-
-    for (int i = 0; i < 10; i++)
-    {
-        pairs[i].first = i;
-        pairs[i].second = i * 10;
-    }
-
-    for (int i = 0; i < 10; i++)
-    {
-        cout << pairs[i].Sum() << endl;
-    }
+    my_class1.Increment(1);
+    my_class1.Print();
 
     return 0;
 }
