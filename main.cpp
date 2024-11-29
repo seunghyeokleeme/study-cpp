@@ -3,40 +3,48 @@
 
 using namespace std;
 
-const int kMaxStr = 100; // 전역 상수
-
-int Min(int a, int b)
+struct MyStruct
 {
-    return a < b ? a : b; // 조건연산자(삼항연산자)
-}
+    int first;
+    int second;
+
+    int Sum()
+    {
+        return first + second;
+    }
+};
 
 int main()
 {
-    // 문자열 복사
-    char str1[] = "Hello, World!";
-    char str2[kMaxStr];
 
-    // dest, src 안내 (복사할 메모리 크기 주의)
-    memcpy(str2, str1, Min(sizeof(str1), sizeof(str2)));
-    cout << str2 << endl;
+    MyStruct a;
+    a.first = 123;
+    a.second = 456;
 
-    char *dynamic_array = new char[kMaxStr];
+    cout << sizeof(a) << endl;
 
-    // 주의: 동적할당 메모리는 변수 사이즈가 포인터 사이즈임 (배열이 아님)
-    memcpy(dynamic_array, str1, Min(sizeof(str1), sizeof(kMaxStr)));
-    // memcpy(dynamic_array, str2, kMaxStr);
-    cout << dynamic_array << endl;
+    cout << a.Sum() << endl;
 
-    cout << str1 << " " << str2 << " " << dynamic_array << endl;
-    cout << size_t(str1) << " " << size_t(str2) << " " << size_t(dynamic_array) << endl;
+    MyStruct *ptr_a = &a;
 
-    // 보통 크기를 별도로 저장함
+    ptr_a->first = -6;
 
-    delete[] dynamic_array; // 배열 삭제시 []
+    cout << a.first << " " << a.second << " " << a.Sum() << endl;
 
-    // 지우지 않고 재할당할 경우 잃어버림
-    // dynamic_array = new char[원하는크기];
-    // delete[] dynamic_array; 다시 지워줘야 함
+    cout << ptr_a->first << " " << ptr_a->second << " " << ptr_a->Sum() << endl;
+
+    MyStruct pairs[10];
+
+    for (int i = 0; i < 10; i++)
+    {
+        pairs[i].first = i;
+        pairs[i].second = i * 10;
+    }
+
+    for (int i = 0; i < 10; i++)
+    {
+        cout << pairs[i].Sum() << endl;
+    }
 
     return 0;
 }
